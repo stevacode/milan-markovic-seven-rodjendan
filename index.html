@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Χρόνια Πολλά, Milan Markovic Seven</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #59656f;
+      --paper: #f7f1e6;
+      --paper-strong: #fffaf0;
+      --aegean: #123f5c;
+      --sea: #1b6a8f;
+      --gold: #bd8f25;
+      --terracotta: #b85b3d;
+      --olive: #66734c;
+      --line: rgba(23, 33, 43, 0.14);
+      --shadow: 0 22px 60px rgba(18, 63, 92, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .hero {
+      min-height: 94vh;
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: var(--aegean);
+      color: #fff8ea;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(9, 24, 34, 0.74), rgba(9, 24, 34, 0.22) 48%, rgba(9, 24, 34, 0.82)),
+        linear-gradient(0deg, rgba(9, 24, 34, 0.82), rgba(9, 24, 34, 0.02) 50%);
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 42% 48%;
+      z-index: -2;
+      filter: saturate(1.06) contrast(1.04);
+    }
+
+    .meander {
+      height: 18px;
+      background:
+        linear-gradient(90deg, transparent 0 12px, var(--gold) 12px 16px, transparent 16px 30px),
+        linear-gradient(90deg, var(--gold), var(--gold));
+      background-size: 48px 18px, 100% 2px;
+      background-position: 0 0, 0 8px;
+      background-repeat: repeat-x, repeat-x;
+      opacity: 0.86;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 24vh 0 68px;
+      display: grid;
+      gap: 28px;
+      grid-template-columns: minmax(220px, 0.84fr) minmax(0, 1fr);
+      align-items: end;
+    }
+
+    .hero-main,
+    .hero-aside {
+      grid-column: 2;
+    }
+
+    .kicker,
+    .label,
+    .small-caps,
+    .nav a,
+    .button {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .kicker {
+      color: #f1c96b;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin: 0 0 16px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 .name-first,
+    h1 .name-nick {
+      display: block;
+    }
+
+    h1 .name-first {
+      font-size: 0.5em;
+      line-height: 1.02;
+    }
+
+    h1 .name-nick {
+      color: #f1c96b;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin: 0;
+      color: rgba(255, 248, 234, 0.9);
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
+    }
+
+    .hero-aside {
+      border-left: 3px solid #f1c96b;
+      padding: 22px 0 22px 22px;
+      color: rgba(255, 248, 234, 0.92);
+      max-width: 430px;
+    }
+
+    .hero-aside strong {
+      display: block;
+      color: #fff8ea;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background: rgba(247, 241, 230, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 13px;
+      border-radius: 999px;
+      color: var(--aegean);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(189, 143, 37, 0.18);
+    }
+
+    section {
+      padding: 86px 22px;
+    }
+
+    .wrap {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+    }
+
+    .narrow {
+      width: min(820px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--terracotta);
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    h2 {
+      color: var(--aegean);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2.2vw, 1.28rem);
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .story {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 248, 234, 0.7)),
+        radial-gradient(circle at 12% 20%, rgba(189, 143, 37, 0.16), transparent 30%),
+        var(--paper);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .stat-line {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .stat b {
+      display: block;
+      color: var(--aegean);
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .scroll-text {
+      position: relative;
+      padding: 34px;
+      background: var(--paper-strong);
+      border: 1px solid rgba(189, 143, 37, 0.42);
+      box-shadow: var(--shadow);
+    }
+
+    .scroll-text::before,
+    .scroll-text::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .scroll-text::before {
+      top: 16px;
+    }
+
+    .scroll-text::after {
+      bottom: 16px;
+    }
+
+    .scroll-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quote-band {
+      background: var(--aegean);
+      color: #fff8ea;
+      padding: 56px 22px;
+      text-align: center;
+    }
+
+    .quote-band p {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      font-size: clamp(1.35rem, 3.2vw, 2.3rem);
+      line-height: 1.28;
+    }
+
+    .oracle {
+      background: #fff8ea;
+    }
+
+    .oracle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .oracle-card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8efe0;
+      box-shadow: 0 14px 34px rgba(23, 33, 43, 0.08);
+    }
+
+    .oracle-card:nth-child(2) {
+      background: #edf3ee;
+    }
+
+    .oracle-card:nth-child(3) {
+      background: #f3ead7;
+    }
+
+    .oracle-card .small-caps {
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .oracle-card p {
+      font-size: 1.28rem;
+      line-height: 1.38;
+      color: var(--ink);
+    }
+
+    .oracle-card footer {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.86rem;
+    }
+
+    .gallery-section {
+      background:
+        linear-gradient(180deg, rgba(18, 63, 92, 0.06), rgba(18, 63, 92, 0)),
+        var(--paper);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+      border-radius: 8px;
+      background: var(--aegean);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card.small {
+      min-height: 540px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-card.primary img {
+      object-position: 42% 50%;
+    }
+
+    .photo-card.small img {
+      object-position: 58% 45%;
+    }
+
+    .caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 16px 18px;
+      border-left: 3px solid #f1c96b;
+      background: rgba(9, 24, 34, 0.76);
+      color: #fff8ea;
+      backdrop-filter: blur(8px);
+    }
+
+    .caption b {
+      display: block;
+      margin-bottom: 4px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #f1c96b;
+    }
+
+    .caption p {
+      margin: 0;
+      line-height: 1.38;
+    }
+
+    .doctor {
+      background: linear-gradient(135deg, var(--aegean), var(--sea));
+      color: #fff8ea;
+    }
+
+    .doctor h2,
+    .doctor .lead {
+      color: #fff8ea;
+    }
+
+    .doctor .label {
+      color: #f1c96b;
+    }
+
+    .doctor-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .doctor-copy p {
+      color: rgba(255, 248, 234, 0.88);
+      max-width: 720px;
+    }
+
+    .badge-list {
+      display: grid;
+      gap: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 16px;
+      border: 1px solid rgba(255, 248, 234, 0.2);
+      background: rgba(255, 248, 234, 0.08);
+      border-radius: 8px;
+    }
+
+    .badge i {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 34px;
+      border-radius: 50%;
+      background: #f1c96b;
+      color: var(--aegean);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    .badge span {
+      font-size: 0.94rem;
+      line-height: 1.3;
+    }
+
+    .toast {
+      background:
+        radial-gradient(circle at 78% 18%, rgba(102, 115, 76, 0.18), transparent 26%),
+        radial-gradient(circle at 16% 80%, rgba(184, 91, 61, 0.15), transparent 28%),
+        #fff8ea;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .toast blockquote {
+      max-width: 840px;
+      margin: 28px auto 32px;
+      color: var(--aegean);
+      font-size: clamp(1.28rem, 3.2vw, 2rem);
+      line-height: 1.48;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--terracotta);
+      color: #fff8ea;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(184, 91, 61, 0.22);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .signature {
+      margin: 34px 0 0;
+      color: var(--terracotta);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      padding: 30px 22px;
+      background: #101820;
+      color: rgba(255, 248, 234, 0.8);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 14px;
+      top: 54%;
+      left: 50%;
+      pointer-events: none;
+      animation: pop 950ms ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.4);
+      }
+      12% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        font-size: 17px;
+      }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .hero-photo {
+        object-position: 39% 48%;
+      }
+
+      .hero-inner,
+      .story-grid,
+      .gallery,
+      .doctor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main,
+      .hero-aside {
+        grid-column: auto;
+      }
+
+      .hero-inner {
+        width: min(100% - 30px, 680px);
+        padding-bottom: 86px;
+      }
+
+      .hero-aside {
+        max-width: 460px;
+      }
+
+      .nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      section {
+        padding: 68px 18px;
+      }
+
+      .oracle-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card,
+      .photo-card.small {
+        min-height: 440px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(9, 24, 34, 0.88), rgba(9, 24, 34, 0.1) 58%),
+          linear-gradient(90deg, rgba(9, 24, 34, 0.56), rgba(9, 24, 34, 0.08));
+      }
+
+      .hero-photo {
+        object-position: 34% 48%;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.8rem);
+      }
+
+      .scroll-text,
+      .oracle-card {
+        padding: 24px;
+      }
+
+      .photo-card,
+      .photo-card.small {
+        min-height: 390px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button:hover,
+      .reveal,
+      .reveal.in,
+      .confetti {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="vrh">
+    <img class="hero-photo" src="assets/doktor-more.jpg" alt="Slavljenik pored mora u sumrak">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <p class="kicker">Χρόνια Πολλά · Srećan rođendan</p>
+        <h1><span class="name-first">Milan Markovic</span><span class="name-nick">Seven</span></h1>
+        <p class="hero-copy">Za čoveka koji ume da sastavi vilicu, društvo i veče. Maksilofacijalni hirurg na specijalizaciji, grčka krv, veliko srce i humor koji stiže bez uputnice.</p>
+      </div>
+      <aside class="hero-aside">
+        <strong>kad neko kaže: Huan Manuel Baga</strong>
+        <span>cela ekipa zna da je krenula interna mitologija. Uz to: Reebok Classic, polo majice i počasni predmet lat. deks... lat. sin.</span>
+      </aside>
+    </div>
+  </header>
+
+  <div class="meander" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Navigacija kroz čestitku">
+    <a href="#mit">Mit</a>
+    <a href="#fore">Fore</a>
+    <a href="#slike">Slike</a>
+    <a href="#hram">Hram</a>
+    <a href="#zdravica">Zdravica</a>
+  </nav>
+
+  <section class="story" id="mit">
+    <div class="wrap story-grid reveal">
+      <div class="section-head">
+        <span class="label">Prvi čin · Olimp zapisuje</span>
+        <h2>Legenda kaže da su bogovi tog dana imali dežurstvo.</h2>
+        <p class="lead">Jedni su mu dali mirnu ruku, drugi grčki temperament, a neko vrlo duhovit mu je ubacio ceo folder fora u glavu.</p>
+        <div class="stat-line" aria-label="Tri osobine slavljenika">
+          <div class="stat">
+            <b>Maksilofacijalni hirurg</b>
+            <span>precizan kad treba, opasan kad krene da objašnjava.</span>
+          </div>
+          <div class="stat">
+            <b>Grčki DNK</b>
+            <span>Χρόνια Πολλά se ovde ne izgovara, nego se slavi.</span>
+          </div>
+          <div class="stat">
+            <b>Humanista</b>
+            <span>čovek koji ne zaboravlja čoveka ispred sebe.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-text">
+        <p>Pre mnogo konsultacija i još više smena, rodio se lik koji će jednako ozbiljno shvatiti tuđu muku i potpuno neozbiljno shvatiti svaku priliku da nas nasmeje.</p>
+        <p>Atina mu je dala mudrost, Asklepije preciznost, majka grčki ritam, a društvo mu je, bez mnogo otpora, dodelilo zvanje: najzanimljiviji čovek u prostoriji.</p>
+        <p>I zato danas ne slavimo samo rođendan. Slavimo kompletnu pojavu: doktora, druga, humanistu i čoveka zbog kog i obična kafa zna da se pretvori u scenu.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-band">
+    <p>Najređi tip ljudi: dovoljno ozbiljan da mu poveriš lice, dovoljno lud da mu poveriš mikrofon.</p>
+  </div>
+
+  <section class="oracle" id="fore">
+    <div class="wrap reveal">
+      <div class="section-head narrow">
+        <span class="label">Delfijsko proročanstvo · dokazni materijal</span>
+        <h2>Tri svete sentence.</h2>
+        <p class="lead">Ovo se ne prevodi. Ovo se samo kaže, pogleda u daljinu i nastavi dalje kao da je sve jasno.</p>
+      </div>
+
+      <div class="oracle-grid">
+        <article class="oracle-card">
+          <div>
+            <div class="small-caps">I · anatomija sudbine</div>
+            <p>lat. deks... lat. sin.</p>
+          </div>
+          <footer>Kad se pomešaju medicina, latinština i sigurnost čoveka koji zna šta radi.</footer>
+        </article>
+
+        <article class="oracle-card">
+          <div>
+            <div class="small-caps">II · interna fora</div>
+            <p>Huan Manuel Baga.</p>
+          </div>
+          <footer>Niko ne zna zašto, ali svi znaju kad treba da se kaže.</footer>
+        </article>
+
+        <article class="oracle-card">
+          <div>
+            <div class="small-caps">III · stil života</div>
+            <p>Reebok Classic i polo majice neće da se kupe same.</p>
+          </div>
+          <footer>Estetika: uredna. Prioriteti: jasni. Misija: nastavlja se.</footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section" id="slike">
+    <div class="wrap reveal">
+      <div class="section-head narrow">
+        <span class="label">Slike sa Olimpa · dve epizode</span>
+        <h2>Od Egeja do Vamos-Tamosa.</h2>
+        <p class="lead">Jedan kadar kaže “grčka razglednica”, drugi kaže “daj mikrofon, ovo postaje istorija”.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="photo-card primary">
+          <img src="assets/doktor-more.jpg" alt="Slavljenik pored mora u sumrak">
+          <figcaption class="caption">
+            <b>Asklepije na obali</b>
+            <p>Strogo lice, Egejsko more, košulja spremna za mitologiju. Ovako izgleda kad specijalizacija ode na kratki predah.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card small">
+          <img src="assets/vamos-tamos.jpg" alt="Slavljenik peva u lokalu Vamos-Tamos">
+          <figcaption class="caption">
+            <b>Dionisov mikrofon</b>
+            <p>Kada krene ova energija, više nema publike. Postoje samo svedoci.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="doctor" id="hram">
+    <div class="wrap doctor-grid reveal">
+      <div class="doctor-copy">
+        <span class="label">Asklepijev hram · ozbiljan deo</span>
+        <h2>Ruka hirurga, srce humaniste.</h2>
+        <p>Maksilofacijalna hirurgija nije samo disciplina za precizne ljude. To je posao u kom popravljaš ono što je najvidljivije, a moraš da čuvaš ono što je najnežnije: dostojanstvo čoveka.</p>
+        <p>Ti to nosiš na svoj način: sa znanjem, smirenošću, forom u džepu i onim retkim osećajem da se ljudi pored tebe stvarno osete viđeno.</p>
+      </div>
+
+      <div class="badge-list" aria-label="Rođendanski ordeni">
+        <div class="badge"><i>1</i><span>Orden za vilicu, lice i svaku komplikovanu situaciju.</span></div>
+        <div class="badge"><i>2</i><span>Orden za grčki duh, srpski humor i internacionalni nastup.</span></div>
+        <div class="badge"><i>3</i><span>Orden za veliko srce, bez patetike, ali potpuno zasluženo.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toast" id="zdravica">
+    <div class="wrap reveal">
+      <span class="label">Zdravica · u tvoje ime</span>
+      <h2>Χρόνια Πολλά, Milane.</h2>
+      <blockquote>
+        Da ti svaka godina donese manje dežurstava koja lome dušu, više ljudi koji te razumeju, pacijente kojima stvarno promeniš život, fore koje ne zastarevaju i dovoljno novih Reebok Classic patika da mirno spavaš.
+      </blockquote>
+      <button class="button" id="toastButton" type="button">Za zdravlje</button>
+      <p class="signature">εις υγείαν · srećan rođendan</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    Rođendanska poslanica za Milana Markovica Sevena, humanistu i doktora sa ozbiljnim fondom internih fora
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+    const colors = ["#bd8f25", "#b85b3d", "#1b6a8f", "#66734c", "#fff8ea"];
+    const toast = document.querySelector(".toast");
+    const toastButton = document.querySelector("#toastButton");
+
+    toastButton.addEventListener("click", () => {
+      for (let i = 0; i < 34; i += 1) {
+        const piece = document.createElement("span");
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 90 + Math.random() * 220;
+        piece.className = "confetti";
+        piece.style.background = colors[i % colors.length];
+        piece.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+        piece.style.setProperty("--y", `${Math.sin(angle) * distance - 70}px`);
+        piece.style.setProperty("--r", `${Math.random() * 520 - 260}deg`);
+        toast.appendChild(piece);
+        window.setTimeout(() => piece.remove(), 1000);
+      }
+    });
+  </script>
+</body>
+</html>
