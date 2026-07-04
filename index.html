@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Χρόνια Πολλά, Milan Markovic Seven</title>
+  <title>Χρόνια Πολλά, Milan Markovic Seven · 30</title>
   <style>
     :root {
       --ink: #17212b;
@@ -76,6 +76,44 @@
       object-position: 42% 48%;
       z-index: -2;
       filter: saturate(1.06) contrast(1.04);
+    }
+
+    .age-mark {
+      position: absolute;
+      top: clamp(20px, 6vh, 58px);
+      right: clamp(18px, 5vw, 64px);
+      z-index: 1;
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(241, 201, 107, 0.72);
+      border-radius: 50%;
+      background: rgba(9, 24, 34, 0.36);
+      color: #f1c96b;
+      text-align: center;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(8px);
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .age-mark span {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: 0;
+    }
+
+    .age-mark small {
+      display: block;
+      margin-top: 5px;
+      color: #fff8ea;
+      font-size: 0.62rem;
+      font-weight: 800;
     }
 
     .meander {
@@ -666,6 +704,21 @@
         font-size: clamp(3rem, 16vw, 4.8rem);
       }
 
+      .age-mark {
+        top: 16px;
+        right: 14px;
+        width: 82px;
+        height: 82px;
+      }
+
+      .age-mark span {
+        font-size: 2.45rem;
+      }
+
+      .age-mark small {
+        font-size: 0.52rem;
+      }
+
       .scroll-text,
       .oracle-card {
         padding: 24px;
@@ -697,15 +750,19 @@
 <body>
   <header class="hero" id="vrh">
     <img class="hero-photo" src="assets/doktor-more.jpg" alt="Slavljenik pored mora u sumrak">
+    <div class="age-mark" aria-label="Jubilarni trideseti rođendan">
+      <span>30</span>
+      <small>jubilarni</small>
+    </div>
     <div class="hero-inner">
       <div class="hero-main">
-        <p class="kicker">Χρόνια Πολλά · Srećan rođendan</p>
+        <p class="kicker">Χρόνια Πολλά · Jubilarni 30. rođendan</p>
         <h1><span class="name-first">Milan Markovic</span><span class="name-nick">Seven</span></h1>
-        <p class="hero-copy">Za čoveka koji ume da sastavi vilicu, društvo i veče. Maksilofacijalni hirurg na specijalizaciji, grčka krv, veliko srce i humor koji stiže bez uputnice.</p>
+        <p class="hero-copy">Za jubilarni trideseti rođendan čoveka koji ume da sastavi vilicu, društvo i veče. Maksilofacijalni hirurg na specijalizaciji, grčka krv, veliko srce i humor koji stiže bez uputnice.</p>
       </div>
       <aside class="hero-aside">
         <strong>kad neko kaže: Huan Manuel Baga</strong>
-        <span>cela ekipa zna da je krenula interna mitologija. Uz to: Reebok Classic, polo majice i počasni predmet lat. deks... lat. sin.</span>
+        <span>cela ekipa zna da je krenula interna mitologija. Trideset godina stila: Reebok Classic, polo majice i počasni predmet lat. deks... lat. sin.</span>
       </aside>
     </div>
   </header>
@@ -724,8 +781,8 @@
     <div class="wrap story-grid reveal">
       <div class="section-head">
         <span class="label">Prvi čin · Olimp zapisuje</span>
-        <h2>Legenda kaže da su bogovi tog dana imali dežurstvo.</h2>
-        <p class="lead">Jedni su mu dali mirnu ruku, drugi grčki temperament, a neko vrlo duhovit mu je ubacio ceo folder fora u glavu.</p>
+        <h2>Legenda kaže da su bogovi za tridesetu sveću imali dežurstvo.</h2>
+        <p class="lead">Tri decenije kasnije: mirna ruka, grčki temperament i folder fora koji očigledno nema kraj.</p>
         <div class="stat-line" aria-label="Tri osobine slavljenika">
           <div class="stat">
             <b>Maksilofacijalni hirurg</b>
@@ -751,7 +808,7 @@
   </section>
 
   <div class="quote-band">
-    <p>Najređi tip ljudi: dovoljno ozbiljan da mu poveriš lice, dovoljno lud da mu poveriš mikrofon.</p>
+    <p>Trideset godina: dovoljno ozbiljan da mu poveriš lice, dovoljno lud da mu poveriš mikrofon.</p>
   </div>
 
   <section class="oracle" id="fore">
@@ -838,9 +895,9 @@
   <section class="toast" id="zdravica">
     <div class="wrap reveal">
       <span class="label">Zdravica · u tvoje ime</span>
-      <h2>Χρόνια Πολλά, Milane.</h2>
+      <h2>Χρόνια Πολλά, Milane. Trideseta ti stoji opasno.</h2>
       <blockquote>
-        Da ti svaka godina donese manje dežurstava koja lome dušu, više ljudi koji te razumeju, pacijente kojima stvarno promeniš život, fore koje ne zastarevaju i dovoljno novih Reebok Classic patika da mirno spavaš.
+        Da ti trideseta donese manje dežurstava koja lome dušu, više ljudi koji te razumeju, pacijente kojima stvarno promeniš život, fore koje ne zastarevaju i dovoljno novih Reebok Classic patika da mirno spavaš.
       </blockquote>
       <button class="button" id="toastButton" type="button">Za zdravlje</button>
       <p class="signature">εις υγείαν · srećan rođendan</p>
@@ -848,7 +905,7 @@
   </section>
 
   <footer class="site-footer">
-    Rođendanska poslanica za Milana Markovica Sevena, humanistu i doktora sa ozbiljnim fondom internih fora
+    Jubilarna 30. rođendanska poslanica za Milana Markovica Sevena, humanistu i doktora sa ozbiljnim fondom internih fora
   </footer>
 
   <script>
